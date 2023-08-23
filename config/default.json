@@ -1,0 +1,13 @@
+{
+    "api": {
+        "name": "Config API"
+    },
+
+    "database": {
+        "host": "fake_host",
+        "port": 3306,
+        "username": "fake_user",
+        "password": "fake_password",
+        "database": "crm"
+      }
+}

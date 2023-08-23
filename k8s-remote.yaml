@@ -1,0 +1,58 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ingress-api
+  namespace: barata
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ingress-api
+  template:
+    metadata:
+      labels:
+        app: ingress-api
+    spec:
+      containers:
+        - name: ingress-api
+          image: baratahunter/ingress-api:latest
+          ports:
+            - containerPort: 3000
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ingress-apiz
+  namespace: barata
+spec:
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
+  type: ClusterIP
+  selector:
+    app: ingress-api
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-api
+  namespace: barata
+spec:
+  tls:
+  - hosts: 
+    - ingress-api.barata.border.berzuk.com
+  ingressClassName: nginx
+  rules:
+  - host: ingress-api.barata.border.berzuk.com
+    http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: ingress-api
+                port:
+                  number: 80

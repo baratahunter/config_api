@@ -1,0 +1,6 @@
+### Hello World!
+GET http://localhost:3000
+
+
+### Config request
+GET http://localhost:3000/config
