@@ -1,12 +1,14 @@
 FROM node:20-alpine
 
+USER node
+
 WORKDIR /server
 
-COPY package.json package-lock.json ./
+COPY --chown=node:node package.json package-lock.json ./
 
 RUN npm install
 
-COPY . .
+COPY --chown=node:node . .
 
 EXPOSE 3000
 
