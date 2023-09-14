@@ -4,11 +4,11 @@
   tasks:
 
   - name: stop existing container
-    command: docker container stop config_api-jenkins
+    command: docker container stop config-api-jenkins
     ignore_errors: yes
 
   - name: remove container
-    command: docker container rm config_api-jenkins
+    command: docker container rm config-api-jenkins
     ignore_errors: yes
 
   - name: remove image
@@ -16,4 +16,4 @@
     ignore_errors: yes
 
   - name: create container
-    command: docker container run -d --name config_api-jenkins -p 3000:3000 baratahunter/config-api
+    command: docker container run -d --name config-api-jenkins -p 3000:3000 baratahunter/config-api

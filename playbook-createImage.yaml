@@ -3,12 +3,12 @@
 
   tasks:
   - name: create docker image
-    command: docker build -t config_api .
+    command: docker build -t config-api .
     args:
       chdir: /var/lib/jenkins/local/ansible
 
   - name: create tag for dockerhub
-    command: docker tag config_api:latest rg.border.berzuk.com/apis-artifacts/config-api:latest
+    command: docker tag config-api:latest rg.border.berzuk.com/apis-artifacts/config-api:latest
 
   - name: push image onto harbor
     command: docker push rg.border.berzuk.com/apis-artifacts/config-api:latest
