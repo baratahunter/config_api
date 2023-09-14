@@ -14,9 +14,11 @@ spec:
       labels:
         app: config-api
     spec:
+      imagePullSecrets:
+        - name: regcred
       containers:
         - name: config-api
-          image: baratahunter/config-api:latest
+          image: rg.border.berzuk.com/apis-artifacts/config-api:latest
           ports:
             - containerPort: 3000
       restartPolicy: Always
