@@ -1,0 +1,12 @@
+---
+- hosts: localhost
+#  become: true
+  user: root
+
+  tasks:
+
+  - name: deploy on k8s
+    command: kubectl apply -f k8s-remote.yaml
+
+  - name: update deployment with new pods if image changes in docker hub
+    command: kubectl rollout restart deployment.apps/config-api

@@ -1,0 +1,14 @@
+---
+- hosts: localhost
+
+  tasks:
+  - name: create docker image
+    command: docker build -t config_api .
+    args:
+      chdir: /var/lib/jenkins/local/ansible
+
+  - name: create tag for dockerhub
+    command: docker tag config_api baratahunter/config-api
+
+  - name: push image onto dockerhub
+    command: docker push baratahunter/config-api
