@@ -8,7 +8,7 @@
       chdir: /var/lib/jenkins/local/ansible
 
   - name: create tag for dockerhub
-    command: docker tag config_api baratahunter/config-api
+    command: docker tag config_api:latest rg.border.berzuk.com/apis-artifacts/config-api:latest
 
-  - name: push image onto dockerhub
-    command: docker push baratahunter/config-api
+  - name: push image onto harbor
+    command: docker push rg.border.berzuk.com/apis-artifacts/config-api:latest
